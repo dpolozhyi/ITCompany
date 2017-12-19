@@ -160,6 +160,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\api\DefaultController.cs" />
+    <Compile Include="Controllers\api\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -218,6 +220,16 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ITCompany.BL\ITCompany.BL.csproj">
+      <Project>{97031ba6-5236-4868-913a-01ecfd8fc8ae}</Project>
+      <Name>ITCompany.BL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ITCompany.Entities\ITCompany.Entities.csproj">
+      <Project>{7ae67141-1829-4016-9917-015d36e96fcc}</Project>
+      <Name>ITCompany.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

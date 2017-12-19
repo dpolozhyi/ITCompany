@@ -58,6 +58,8 @@
   <ItemGroup>
     <Folder Include="Properties" />
     <Folder Include="Tables" />
+    <Folder Include="Procedures" />
+    <Folder Include="Procedures\Employee" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Employee.sql" />
@@ -70,5 +72,6 @@
     <Build Include="Tables\Skill_Employee.sql" />
     <Build Include="Tables\Team.sql" />
     <Build Include="Tables\TeamMember.sql" />
+    <Build Include="Procedures\Employee\GetEmployeeList.sql" />
   </ItemGroup>
 </Project>
