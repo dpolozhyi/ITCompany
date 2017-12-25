@@ -169,8 +169,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\employee\employee.component.css" />
+    <Content Include="app\employee\employee.component.html" />
+    <Content Include="app\root\app.component.css" />
+    <Content Include="app\root\app.component.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -182,9 +187,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="package.json" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -206,9 +209,13 @@
     <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\employee\employee.component.ts" />
+    <TypeScriptCompile Include="app\root\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\shared\models\employee.model.ts" />
+    <TypeScriptCompile Include="app\shared\models\position.model.ts" />
+    <TypeScriptCompile Include="app\shared\services\employee.service.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -216,15 +223,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ITCompany.BL\ITCompany.BL.csproj">
-      <Project>{97031ba6-5236-4868-913a-01ecfd8fc8ae}</Project>
-      <Name>ITCompany.BL</Name>
+    <ProjectReference Include="..\ITCompany.DAL\ITCompany.DAL.csproj">
+      <Project>{AA8D5DEB-D5B1-4332-B9B7-E4A628625BD9}</Project>
+      <Name>ITCompany.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ITCompany.Entities\ITCompany.Entities.csproj">
       <Project>{7ae67141-1829-4016-9917-015d36e96fcc}</Project>

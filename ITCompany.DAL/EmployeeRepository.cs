@@ -60,6 +60,67 @@ namespace ITCompany.DAL
             }
         }
 
+        public int AddEmployee(string firstName, string lastName, DateTime dob, int positionId)
+        {
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand("AddEmployee", this.connection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.Add("@firstName", SqlDbType.NVarChar).Value = firstName;
+                sqlCommand.Parameters.Add("@lastName", SqlDbType.NVarChar).Value = lastName;
+                sqlCommand.Parameters.Add("@dob", SqlDbType.DateTime).Value = dob;
+                sqlCommand.Parameters.Add("@positionId", SqlDbType.Int).Value = positionId;
+                return (int)sqlCommand.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                Debug.Write(ex);
+                throw new StorageException(ex.Message, ex);
+            }
+        }
+
+        public int DeleteEmployeeById(int id)
+        {
+            try
+            {
+                SqlCommand sqlCommand = new SqlCommand("DeleteEmployee", this.connection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                sqlCommand.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                return sqlCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Debug.Write(ex);
+                throw new StorageException(ex.Message, ex);
+            }
+        }
+
+        public IEnumerable<Position> GetPositionList()
+        {
+            try
+            {
+                IList<Position> positionList = new List<Position>();
+                SqlCommand sqlCommand = new SqlCommand("GetPositionList", this.connection);
+                sqlCommand.CommandType = CommandType.StoredProcedure;
+                using (var sqlReader = sqlCommand.ExecuteReader())
+                {
+                    while (sqlReader.Read())
+                    {
+                        Position position = new Position();
+                        position.Id = this.ParseInt(sqlReader[0].ToString());
+                        position.Name = sqlReader[1].ToString();
+                        positionList.Add(position);
+                    }
+                }
+                return positionList;
+            }
+            catch (Exception ex)
+            {
+                Debug.Write(ex);
+                throw new StorageException(ex.Message, ex);
+            }
+        }
+
         private int ParseInt(string value)
         {
             int num;

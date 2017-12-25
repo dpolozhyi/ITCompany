@@ -1,0 +1,45 @@
+﻿<div class="employees">
+    <div class="add-employee" *ngIf="addingEmployee">
+        <br />
+        <div class="alert alert-danger" role="alert" *ngIf="!newEmployeeValid">
+            Fill in all information!
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">First name</span>
+            <input type="text" class="form-control" [(ngModel)]="newEmployee.firstName" placeholder="Type first name here..." aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">Last name</span>
+            <input type="text" class="form-control" [(ngModel)]="newEmployee.lastName" placeholder="Type last name here..." aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <br>
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">Position</span>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span *ngIf="!newEmployee.position">Choose position...</span>
+                    <span *ngIf="newEmployee.position">{{newEmployee.position.name}}</span>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" *ngIf="positions">
+                    <a class="dropdown-item" href="#" *ngFor="let position of positions" (click)="chooseNewEmployeePosition(position)">{{position.name}}</a>
+                </div>
+            </div>
+        </div>
+        <br />
+        <button type="button" class="btn btn-success" (click)="onAddNewEmployee()">Add Employee</button>
+        <button type="button" class="btn btn-outline-secondary" (click)="addingEmployee=false">Back to list</button>
+    </div>
+    <div class="employee-list" *ngIf="!addingEmployee">
+        <button type="button" class="btn btn-outline-success" (click)="addingEmployee=true">Add Employee</button>
+        <ul class="list-group" *ngIf="employees">
+            <li class="list-group-item" *ngFor="let employee of employees">
+               {{employee.firstName}} {{employee.lastName}} 
+                <span class="position">{{employee.position.name}}</span>
+                <span class="employee-remove" (click)="onDeleteEmployee(employee.id)">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
